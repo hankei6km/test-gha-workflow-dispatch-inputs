@@ -71,3 +71,21 @@ jobs:
           OPTIONAL_DATA: ${{ github.event.inputs.optional }}
           SECRET_DATA: ${{ github.event.inputs.secret }}
           FLAG_DATA: ${{ github.event.inputs.flag }}
+
+  quote-print:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Print inputs
+        run: |
+          echo "${{ github.event.inputs.text }}"
+        env:
+
+      - name: Print inputs via env
+        run: |
+          echo "${TEXT_DATA}"
+        env:
+          TEXT_DATA: ${{ github.event.inputs.text }}
+
