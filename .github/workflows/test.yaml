@@ -45,4 +45,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Print json
-        run: jq < "${GITHUB_EVENT_PATH}" -r .inputs.slides
+        run: jq < "${GITHUB_EVENT_PATH}" -r .inputs
