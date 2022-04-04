@@ -37,3 +37,12 @@ jobs:
           OPTIONAL_DATA: ${{ github.event.inputs.optional }}
           SECRET_DATA: ${{ github.event.inputs.secret }}
           FLAG_DATA: ${{ github.event.inputs.flag }}
+
+  json-print:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Print json
+        run: jq < "${GITHUB_EVENT_PATH}" -r .inputs.slides
