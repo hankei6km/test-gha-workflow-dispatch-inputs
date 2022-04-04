@@ -17,7 +17,7 @@ on:
       flag:
         type: boolean 
         required: true 
-        description: 'True to print to STDOUT'
+        description: 'Flag data'
 
 jobs:
   simple-print:
