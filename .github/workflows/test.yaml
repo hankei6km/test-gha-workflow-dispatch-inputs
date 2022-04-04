@@ -81,7 +81,6 @@ jobs:
       - name: Print inputs
         run: |
           echo "${{ github.event.inputs.text }}"
-        env:
 
       - name: Print inputs via env
         run: |
