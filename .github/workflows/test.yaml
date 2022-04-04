@@ -46,3 +46,28 @@ jobs:
 
       - name: Print json
         run: jq < "${GITHUB_EVENT_PATH}" -r .inputs
+
+  mask-print:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Mask secret
+        run: |
+          echo -n '::add-mask::' > cmd.txt
+          jq < "${GITHUB_EVENT_PATH}" -r .inputs.secret >> cmd.txt
+          cat cmd.txt
+          rm cmd.txt
+
+      - name: Print inputs
+        run: |
+          echo "${TEXT_DATA}"
+          echo "${OPTIONAL_DATA}"
+          echo "${SECRET_DATA}"
+          echo "${FLAG_DATA}"
+        env:
+          TEXT_DATA: ${{ github.event.inputs.text }}
+          OPTIONAL_DATA: ${{ github.event.inputs.optional }}
+          SECRET_DATA: ${{ github.event.inputs.secret }}
+          FLAG_DATA: ${{ github.event.inputs.flag }}
