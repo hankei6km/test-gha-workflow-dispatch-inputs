@@ -6,6 +6,10 @@ on:
         type: string
         required: true
         description: 'Text data'
+      num:
+        type: number
+        required: true
+        description: 'Number data'
       optional:
         type: string
         required: false
@@ -29,11 +33,13 @@ jobs:
       - name: Print inputs
         run: |
           echo "${TEXT_DATA}"
+          echo "${NUM_DATA}"
           echo "${OPTIONAL_DATA}"
           echo "${SECRET_DATA}"
           echo "${FLAG_DATA}"
         env:
           TEXT_DATA: ${{ github.event.inputs.text }}
+          NUM_DATA: ${{ github.event.inputs.num }}
           OPTIONAL_DATA: ${{ github.event.inputs.optional }}
           SECRET_DATA: ${{ github.event.inputs.secret }}
           FLAG_DATA: ${{ github.event.inputs.flag }}
@@ -63,11 +69,13 @@ jobs:
       - name: Print inputs
         run: |
           echo "${TEXT_DATA}"
+          echo "${NUM_DATA}"
           echo "${OPTIONAL_DATA}"
           echo "${SECRET_DATA}"
           echo "${FLAG_DATA}"
         env:
           TEXT_DATA: ${{ github.event.inputs.text }}
+          NUM_DATA: ${{ github.event.inputs.num }}
           OPTIONAL_DATA: ${{ github.event.inputs.optional }}
           SECRET_DATA: ${{ github.event.inputs.secret }}
           FLAG_DATA: ${{ github.event.inputs.flag }}
